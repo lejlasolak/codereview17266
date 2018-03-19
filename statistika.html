@@ -80,40 +80,22 @@
 		<h1 class="komentari">Komentari</h1>
 
 		<div class="spirala-dio">
-			<h1>Spirala 1</h1>
+			<h1 id="brspirale">Spirala</h1>
 
 			<div class="komentari-dio">
-
-				<div class="komentar">
-					Komentar 1
-				</div>
-
-				<div class="komentar">
-					Komentar 2
-				</div>
-
-				<div class="komentar">
-					Komentar 3
-				</div>
-
-				<div class="komentar">
-					Komentar 4
-				</div>
-
-				<div class="komentar">
-					Komentar 5
-				</div>
-
+				<div id="k1" class="komentar"></div>
+				<div id="k2" class="komentar"></div>
+				<div id="k3" class="komentar"></div>
+				<div id="k4" class="komentar"></div>
+				<div id="k5" class="komentar"></div>
 			</div>
 
 			<div class="stranice">
 				<div class="pagination">
-					<button>&laquo;</button>
-					<button class="active">1</button>
-					<button>2</button>
-					<button>3</button>
-					<button>4</button>
-					<button>&raquo;</button>
+					<button id="1" class="p" onclick="changeActive(1); popuniKomentare(1);">1</button>
+					<button id="2" class="p" onclick="changeActive(2); popuniKomentare(2)">2</button>
+					<button id="3" class="p" onclick="changeActive(3); popuniKomentare(3)">3</button>
+					<button id="4" class="p" onclick="changeActive(4); popuniKomentare(4)">4</button>
 				</div>
 			</div>
 		</div>

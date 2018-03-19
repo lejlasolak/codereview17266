@@ -29,7 +29,7 @@
 	text-decoration: none;
 	font-family: sans-serif;
 	font-weight: bold;
-	font-size: 15pt;
+	font-size: 12pt;
 	width:100%;
 }
 
@@ -37,7 +37,7 @@ table, tr, td{
 
 	text-align: center;
 	border: 4px solid #114B5F;
-	font-size: 12.5pt;
+	font-size: 12pt;
 	font-family: sans-serif;
 	background-color: #E4FDE1;
 	color: #114B5F;
@@ -53,7 +53,7 @@ table {
 input, textarea {
 
 	margin: auto;
-	font-size: 12.5pt;
+	font-size: 12pt;
 	border: none;
 	border-bottom: 4px solid #D8262E;
 	background-color: #E4FDE1;
@@ -82,7 +82,7 @@ td button{
 .up, .down {
 
 	color: #E4FDE1;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .up {

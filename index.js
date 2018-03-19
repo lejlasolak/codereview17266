@@ -1,4 +1,3 @@
-//username: admin password:admin
 const express = require('express');
 const path=require('path');
 const bodyParser = require('body-parser');
@@ -163,7 +162,7 @@ app.post('/menu', function (req,res) {
 
     var links=[];
 
-    if(!req.session.user) links.push("login","deploy");
+    if(!req.session.user) links.push("login");
 
     else if(req.session.user.role==='student'){
 
@@ -565,6 +564,107 @@ app.post('/bodovi', function (req, res) {
         }
 });
 
+app.get('/statistika/:page',function (req, res) {
+
+    var filename= './izvjestajS' + req.params.page;
+    Korisnik.findOne({
+        where:{username: req.session.user.username},
+        include:[
+            {model: Podaci}
+        ]
+    }).then(function (k) {
+
+        filename += k.personalInfo.index + ".txt";
+        var komentari=[];
+
+        if(fs.existsSync(filename))
+         {
+            var file = fs.readFileSync(filename).toString();
+            var lines = file.split("\n");
+            for (var i = 0; i < lines.length; i++)
+                if (lines[i] !== "##########") {
+                    komentari.push(lines[i]);
+                }
+        }
+
+        res.send(JSON.stringify(komentari));
+    });
+});
+
+app.get('/listaKorisnika/:id/details',function (req,res) {
+
+    Korisnik.findOne({
+        where:{id: req.params.id}
+    })
+        .then(function (korisnik) {
+
+            res.send(korisnik);
+        });
+});
+
+app.delete('/listaKorisnika/:id/delete',function (req,res) {
+
+    Korisnik.destroy({
+        where: {
+            id: req.params.id
+        },
+        truncate: true
+    });
+
+    res.send({message:"User successfully deleted"});
+});
+
+app.put('/listaKorisnika/:id/verify',function (req,res) {
+
+    Korisnik.findOne({
+        where:{id: req.params.id}
+    })
+        .then(function (korisnik) {
+
+            var v=!korisnik.verified;
+
+            korisnik.update({
+                verified: v
+            });
+
+            res.send(null);
+        });
+});
+
+app.get('listaKorisnika/search/:username',function(req,res){
+
+    Korisnik.findOne(
+        {
+            where: {username: req.params.username},
+            include:[
+                {model: Role},
+                {model: Podaci}
+            ]
+        }
+    )
+        .then(function (korisnik) {
+
+            if(korisnik.role.roles!=='administrator') {
+
+                var red = '<table>' + popuniZaglavlje() + '<tbody>' + popuniRed(korisnik);
+                if (korisnik.role.roles === 'nastavnik') {
+
+                    if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td></tr>';
+                    else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td></tr>';
+                }
+                else red += '<td>null</td></tr>';
+                red += '</tbody></table>';
+                res.send({data: red});
+            }
+            else res.send({data:null});
+        })
+        .catch(function (err) {
+
+            res.send({data:null});
+        });
+    }
+);
+
 app.post('/login', function(req, res){
 
     Korisnik.findOne(
@@ -580,7 +680,9 @@ app.post('/login', function(req, res){
                 user.comparePasswords(req.body['pass'], function (err, match) {
 
                     if (err) res.send("Greska");
-                    if (!match) res.send("Neispravan password");
+                    if (!match) {
+                        res.send("Neispravan password");
+                    }
                     else {
                         if (user.role.roles === 'nastavnik' && user.verified == false) res.send("Administrator nije odobrio pristup");
                         else {
