@@ -20,7 +20,7 @@ function popuniKomentare(page){
         }
     }
 
-    ajax.open("GET", "/statistika/"+page, true);
+    ajax.open("GET", "/statistika/komentari/page/"+page, true);
     ajax.setRequestHeader("Content-Type","application/json");
     ajax.send();
 }
@@ -35,4 +35,24 @@ function changeActive(id){
 
     document.getElementById(id.toString()).style.backgroundColor="#D8262E";
     document.getElementById(id.toString()).style.color="#FDFFFC";
+}
+
+function popuniKomentar(sifra, spirala){
+
+    var ajax = new XMLHttpRequest();
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState === 4 && ajax.status === 200) {
+
+            var res=JSON.parse(ajax.responseText);
+            var kom=document.getElementsByClassName("marks");
+
+            kom[0].innerHTML=res.komentar;
+        }
+    }
+
+    ajax.open("GET", "/statistika/komentari/?sifra="+sifra+"&spirala="+spirala, true);
+    ajax.setRequestHeader("Content-Type","application/json");
+    ajax.send();
 }

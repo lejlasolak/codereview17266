@@ -16,58 +16,40 @@
 .zaglavlje {
 	
 	grid-area: zaglavlje;
-	padding-left: 50px;
-	padding-right: 50px;
 	background-color: #114B5F;
+	display: flex;
+	padding: 0px 10px;
 }
 
-.zaglavlje h1 {font-size: 20pt;}
-
 .podnaslov {
-		
+
 	border-top: 4px solid #E4FDE1;
 	border-bottom: 4px solid #E4FDE1;
 	grid-area: podnaslov;
-	display: flex;
-	height: fit-content;
-	padding-left: 50px;
-	padding-right: 60px;
-	font-size: 15pt;
 }
 
-h2 {
+.stat {
 
+	width: 80%;
 	float: left;
-	width: 50%;
 	text-align: left;
 	font-size: 15pt;
 }
 
 .text-ime {
-	
-	width: 50%;
+
 	float: right;
 	text-align: right;
-	font-size: 12pt;
+	font-size: 15pt;
 }
 
 .treci-dio {
 	
 	display: grid;
 	grid-area: treci-dio;
-	grid: [r1-start] "info table" [r1-end];
+	grid-template-columns: 1fr 2fr;
 	overflow: hidden;
 	box-sizing: border-box;
-}
-
-.podaci {
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	border-right: 4px solid #E4FDE1;
-	padding: 10px 30px;
-	font-size: 12pt;
 }
 
 .zadnji-dio {
@@ -75,44 +57,27 @@ h2 {
 	grid-area: zadnji-dio;
 }
 
-.spirala-dio, .komentari-dio {
-	
-	padding-left: 50px;
-	padding-right: 50px;
-}
+.spirala-dio h1{
 
-.spirala-dio h1 {
-
-	border: 4px solid #114B5F;
-	padding: 5px 0px;
-	background-color: #D8262E;
+	font-size: 15pt;
+	padding: 10px 0px;
+	margin: auto;
+	background-color: #114B5F;
+	border-top: 4px solid #E4FDE1;
+	border-bottom: 4px solid #E4FDE1;
+	text-align: center;
 }
 
 .komentari-dio {
 	
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-column-gap: 30px;
+	grid-column-gap: 15px;
 	grid-row-gap: 15px;
+	padding: 30px 30px;
 }
 
-.zadnji-dio h1 {
-	
-	text-align: center;
-	font-size: 15pt;
-}
-
-.komentari {
-	
-	border-bottom: 4px solid #E4FDE1;
-	border-top: 4px solid #E4FDE1;
-	background-color: #114B5F;
-	padding: 10px 0px;
-	margin: auto;
-	font-size: 15pt;
-}
-
-.komentar {
+.komentar, .marks {
 	
 	border: 4px solid #114B5F;
 	overflow-x: hidden;
@@ -123,13 +88,19 @@ h2 {
 	font-family: sans-serif;
 	font-size: 12pt;
 	height: 300px;
+	padding: 5px;
+}
+
+.marks{
+
+	height: 250px;
 }
 
 .stranice {
 	
 	text-align: center;
-	padding-bottom: 50px;
-	padding-top: 50px;
+	padding-bottom: 30px;
+	padding-top: 20px;
 }
 
 .pagination {
@@ -156,6 +127,7 @@ h2 {
 	height: 100%;
 	justify-content:center;
 	align-items:center;
+	border-left: 4px solid #E4FDE1;
 }
 
 table, th, td{
@@ -185,28 +157,37 @@ table tr {
 	background-color: #E4FDE1;
 }
 
-h1, h2, h3, .podaci p, .tabela {
+h1, .tabela {
 	
 	font-family: sans-serif;
 	color: #FDFFFC;
 }
 
+.com{
+
+	color: #FDFFFC;
+	height: fit-content;
+	font-size: 15pt;
+	font-family: sans-serif;
+	padding: 0px 10px;
+	max-width: 50%;
+}
+
 @media(max-width: 700px) {
 	
 	.treci-dio {
-	
-		grid: [r1-start] "info" [r1-end]
-			  [r2-start] "table" [r2-end];
-	}
-	
-	.podaci {
-		
-		border-right: none;
-		border-bottom: 4px solid #E4FDE1;
+
+		grid-template-columns: repeat(1, 1fr);
 	}
 	
 	.komentari-dio {
 		
 		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.tabela{
+
+		border-top: 4px solid #E4FDE1;
+		border-left: none;
 	}
 }

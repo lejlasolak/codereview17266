@@ -3,72 +3,67 @@
 <div class="glavni">
 
 	<div class="zaglavlje">
-		<h1>WT code reviews</h1>
+		<h1 class="stat">Statistike studenta</h1>
+		<h1 class="text-ime">Ime i prezime</h1>
 	</div>
 
 	<div class="podnaslov">
-		<h2>Statistike studenta</h2>
-		<h3 class="text-ime">Ime i prezime</h3>
+		<h2 class="com">Komentari</h2>
 	</div>
 
 	<div class="treci-dio">
 
-		<div class="podaci">
-			<p>Broj indexa</p>
-			<p>Link na repozitorij</p>
-			<p>Prva parcijala 20</p>
-			<p>Druga parcijala 20</p>
-		</div>
+		<div class="marks"></div>
 
 		<div class="tabela">
 
 			<table>
 				<tr>
-					<th><i class="fa fa-caret-down" aria-hidden="true"></i>  X </th>
-					<th><i class="fa fa-caret-down" aria-hidden="true"></i>  Spirala 1 </th>
-					<th><i class="fa fa-caret-down" aria-hidden="true"></i>  Spirala 2 </th>
-					<th><i class="fa fa-caret-down" aria-hidden="true"></i>  Spirala 3 </th>
-					<th><i class="fa fa-caret-down" aria-hidden="true"></i>  Spirala 4 </th>
+					<th>  X </th>
+					<th>  Spirala 1 </th>
+					<th>  Spirala 2 </th>
+					<th>  Spirala 3 </th>
+					<th>  Spirala 4 </th>
 				</tr>
 
 				<tr>
 					<th>Student 1</th>
-					<td> <a href="#"> X1 </a> </td>
-					<td> <a href="#"> X2 </a> </td>
-					<td> <a href="#"> X3 </a> </td>
-					<td> <a href="#"> X4 </a> </td>
+					<td onclick="popuniKomentar('A',1)"> X1</td>
+					<td onclick="popuniKomentar('A',2)"> X2</td>
+					<td onclick="popuniKomentar('A',3)"> X3</td>
+					<td onclick="popuniKomentar('A',4)"> X4</td>
 				</tr>
 
 				<tr>
 					<th>Student 2</th>
-					<td> <a href="#"> X1 </a> </td>
-					<td> <a href="#"> X2 </a> </td>
-					<td> <a href="#"> X3 </a> </td>
-					<td> <a href="#"> X4 </a> </td>
+					<td onclick="popuniKomentar('B',1)"> X1</td>
+					<td onclick="popuniKomentar('B',2)"> X2</td>
+					<td onclick="popuniKomentar('B',3)"> X3</td>
+					<td onclick="popuniKomentar('B',4)"> X4</td>
 				</tr>
 
 				<tr>
 					<th>Student 3</th>
-					<td> <a href="#"> X1 </a> </td>
-					<td> <a href="#"> X2 </a> </td>
-					<td> <a href="#"> X3 </a> </td>
-					<td> <a href="#"> X4 </a> </td>
+					<td onclick="popuniKomentar('C',1)"> X1</td>
+					<td onclick="popuniKomentar('C',2)"> X2</td>
+					<td onclick="popuniKomentar('C',3)"> X3</td>
+					<td onclick="popuniKomentar('C',4)"> X4</td>
 				</tr>
 
 				<tr>
 					<th>Student 4</th>
-					<td> <a href="#"> X1 </a> </td>
-					<td> <a href="#"> X2 </a> </td>
-					<td> <a href="#"> X3 </a> </td>
-					<td> <a href="#"> X4 </a> </td>
+					<td onclick="popuniKomentar('D',1)"> X1</td>
+					<td onclick="popuniKomentar('D',2)"> X2</td>
+					<td onclick="popuniKomentar('D',3)"> X3</td>
+					<td onclick="popuniKomentar('D',4)"> X4</td>
 				</tr>
 
 				<tr>
 					<th>Student 5</th>
-					<td> <a href="#"> X1 </a> </td>
-					<td> <a href="#"> X2 </a> </td>
-					<td> <a href="#"> X3 </a> </td>
-					<td> <a href="#"> X4 </a> </td>
+					<td onclick="popuniKomentar('E',1)"> X1</td>
+					<td onclick="popuniKomentar('E',2)"> X2</td>
+					<td onclick="popuniKomentar('E',3)"> X3</td>
+					<td onclick="popuniKomentar('E',4)"> X4</td>
 				</tr>
 			</table>
 
@@ -77,7 +72,6 @@
 	</div>
 
 	<div class="zadnji-dio">
-		<h1 class="komentari">Komentari</h1>
 
 		<div class="spirala-dio">
 			<h1 id="brspirale">Spirala</h1>

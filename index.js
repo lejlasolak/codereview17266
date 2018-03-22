@@ -564,9 +564,10 @@ app.post('/bodovi', function (req, res) {
         }
 });
 
-app.get('/statistika/:page',function (req, res) {
+app.get('/statistika/komentari/page/:page',function (req, res) {
 
     var filename= './izvjestajS' + req.params.page;
+
     Korisnik.findOne({
         where:{username: req.session.user.username},
         include:[
@@ -578,7 +579,7 @@ app.get('/statistika/:page',function (req, res) {
         var komentari=[];
 
         if(fs.existsSync(filename))
-         {
+        {
             var file = fs.readFileSync(filename).toString();
             var lines = file.split("\n");
             for (var i = 0; i < lines.length; i++)
@@ -586,12 +587,57 @@ app.get('/statistika/:page',function (req, res) {
                     komentari.push(lines[i]);
                 }
         }
-
         res.send(JSON.stringify(komentari));
     });
 });
 
-app.get('/listaKorisnika/:id/details',function (req,res) {
+app.get('/statistika/komentari', function (req, res) {
+
+    var sifra=req.query.sifra;
+    var spirala=req.query.spirala;
+    var filename='./markS'+spirala;
+    var komentar="";
+
+    Korisnik.findOne({
+        where:{username: req.session.user.username},
+        include:[
+            {model: Podaci}
+        ]
+    }).then(function (k) {
+
+        filename += k.personalInfo.index + ".json";
+
+        if(fs.existsSync(filename))
+        {
+            var file = fs.readFileSync(filename);
+            file=JSON.parse(file);
+
+            for(var i=0;i<file.length;i++){
+                if(file[i].sifra_studenta === sifra){
+
+                    komentar=file[i].tekst;
+                    break;
+                }
+            }
+        }
+        res.send(JSON.stringify({komentar: komentar}));
+    });
+});
+
+app.get('/statistika/student',function (req, res) {
+
+    Korisnik.findOne({
+        where: {username: req.session.user.username},
+        include: [
+            {model: Podaci}
+        ]
+    }).then(function (k) {
+
+        res.send(JSON.stringify({ime: k.personalInfo.ime_i_prezime}));
+    });
+});
+
+app.get('/korisnici/:id/details',function (req,res) {
 
     Korisnik.findOne({
         where:{id: req.params.id}
@@ -602,7 +648,7 @@ app.get('/listaKorisnika/:id/details',function (req,res) {
         });
 });
 
-app.delete('/listaKorisnika/:id/delete',function (req,res) {
+app.delete('/korisnici/:id',function (req,res) {
 
     Korisnik.destroy({
         where: {
@@ -614,7 +660,7 @@ app.delete('/listaKorisnika/:id/delete',function (req,res) {
     res.send({message:"User successfully deleted"});
 });
 
-app.put('/listaKorisnika/:id/verify',function (req,res) {
+app.put('/korisnici/:id/verify',function (req,res) {
 
     Korisnik.findOne({
         where:{id: req.params.id}
@@ -631,11 +677,11 @@ app.put('/listaKorisnika/:id/verify',function (req,res) {
         });
 });
 
-app.get('listaKorisnika/search/:username',function(req,res){
+app.get('korisnici/search',function(req,res){
 
     Korisnik.findOne(
         {
-            where: {username: req.params.username},
+            where: {username: req.query.username},
             include:[
                 {model: Role},
                 {model: Podaci}
