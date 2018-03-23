@@ -2,6 +2,19 @@
 
 <div class="okvir">
 
+    <div class="ostalo">
+
+        <h1>Podaci o predmetu</h1>
+
+        <div class="profil">
+            <label id="index-p">Broj indexa:</label>
+            <label id="parc1">I parcijala:</label>
+            <label id="parc2">II parcijala:</label>
+            <a id="link" href="#">Link na BitBucket repozitorij</a>
+        </div>
+
+    </div>
+
     <div class="form">
 
         <h1>Osnovni podaci</h1>
@@ -9,50 +22,43 @@
         <form class="profil">
 
             <div class="unos">
-                <label for="imeprezime-s">Ime i prezime:</label>
-                <input type="text" id="imeprezime-s" name="imeprezime"
+                <label for="imeprezime-p">Ime i prezime:</label>
+                <input type="text" id="imeprezime-p" name="imeprezime"
                        onblur="var rez=Validacija.validirajImeiPrezime(this.value);
 									poruka(rez,'poruke',8);">
             </div>
 
         <div class="unos">
-            <label for="kor">Korisničko ime:</label>
-            <input type="text" id="kor" name="k-ime"
+            <label for="korisnicko-p">Korisničko ime:</label>
+            <input type="text" id="korisnicko-p" name="k-ime"
                    onblur="var rez=Validacija.validirajKorisnicko(this.value);
 									poruka(rez,'poruke',10);">
         </div>
 
         <div class="unos">
-            <label for="index">Broj indexa:</label>
-            <input type="text" id="index" name="index"
-                   onblur="var rez=Validacija.validirajIndex(this.value);
-									poruka(rez,'poruke',1);">
-        </div>
-
-        <div class="unos">
-            <label for="grupa">Broj grupe:</label>
-            <input type="number" name="grupa" id="grupa"
+            <label for="grupa-p">Broj grupe:</label>
+            <input type="number" name="grupa" id="grupa-p"
                    onblur="var rez=Validacija.validirajGrupu(this.value);
 									poruka(rez,'poruke',2);">
         </div>
 
         <div class="unos">
-            <label for="b-url">BitBucket URL:</label>
-            <input type="text" id="b-url" name="url"
+            <label for="url-p">BitBucket URL:</label>
+            <input type="text" id="url-p" name="url"
                    onblur="var rez=Validacija.validirajBitbucketURL(this.value);
 							       poruka(rez,'poruke',6);">
         </div>
 
         <div class="unos">
-            <label for="b-ssh">BitBucket SSH:</label>
-            <input type="text" id="b-ssh" name="ssh"
+            <label for="ssh-p">BitBucket SSH:</label>
+            <input type="text" id="ssh-p" name="ssh"
                    onblur="var rez=Validacija.validirajBitbucketSSH(this.value);
 							       poruka(rez,'poruke',7);">
         </div>
 
         <div class="unos">
-            <label for="repo">Naziv repozitorija:</label>
-            <input type="text" id="repo" name="repo"
+            <label for="repo-p">Naziv repozitorija:</label>
+            <input type="text" id="repo-p" name="repo"
                    onblur="var rez=Validacija.validirajNazivRepozitorija(null,this.value);
 							       poruka(rez,'poruke',9);">
         </div>
@@ -72,7 +78,9 @@
 
     <div class="form">
 
-        <form class="promjenapass">
+        <h1>Promjena passworda</h1>
+
+        <form class="profil">
 
             <div class="unos">
                 <label for="stari">Stari password:</label>
@@ -80,15 +88,15 @@
             </div>
 
             <div class="unos">
-                <label for="pass_s">Novi password:</label>
-                <input type="password" id="pass_s" name="pass"
+                <label for="novi">Novi password:</label>
+                <input type="password" id="novi" name="pass"
                        onblur="var rez=Validacija.validirajPassword(this.value);
 							       poruka(rez,'poruke-p',3);">
             </div>
 
             <div class="unos">
-                <label for="pass_cs">Potvrda passworda:</label>
-                <input type="password" id="pass_cs" name="pass_c"
+                <label for="novi-c">Potvrda passworda:</label>
+                <input type="password" id="novi-c" name="pass_c"
                        onblur="var rez=Validacija.validirajPotvrdu(document.getElementById('pass_s').value,this.value);
 								   poruka(rez,'poruke-p',4);">
             </div>

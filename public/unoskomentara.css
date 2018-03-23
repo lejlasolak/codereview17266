@@ -63,6 +63,8 @@ input, textarea {
 }
 
 textarea{
+
+	box-sizing: border-box;
 	resize: none;
 }
 
@@ -139,6 +141,7 @@ td button{
 	}
 
 	textarea{
-		width: 99%;
+
+		height: 75px;
 	}
 }

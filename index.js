@@ -151,7 +151,8 @@ app.get('/listaKorisnika', function(req, res) {
 
 app.get('/profil',function (req,res) {
 
-    res.sendFile(__dirname + '/profil.html');
+    if(provjeriNastavnika(req) || provjeriAdmina(req) || provjeriStudenta(req)) res.sendFile(__dirname + '/profil.html');
+    else res.send("Nemate pristup stranici ako niste prijavljeni");
 });
 
 app.get('/logout', function (req,res) {
@@ -571,46 +572,27 @@ app.post('/bodovi', function (req, res) {
 
 app.get('/statistika/komentari/page/:page',function (req, res) {
 
-    var filename= './izvjestajS' + req.params.page;
-
-    Korisnik.findOne({
-        where:{username: req.session.user.username},
-        include:[
-            {model: Podaci}
-        ]
-    }).then(function (k) {
-
-        filename += k.personalInfo.index + ".txt";
-        var komentari=[];
+    var filename= './izvjestajS' + req.params.page+req.session.user.index + ".txt";
+    var komentari=[];
 
         if(fs.existsSync(filename))
         {
             var file = fs.readFileSync(filename).toString();
             var lines = file.split("\n");
             for (var i = 0; i < lines.length; i++)
-                if (lines[i] !== "##########") {
+                if(lines[i].indexOf("###")===-1) {
                     komentari.push(lines[i]);
                 }
         }
         res.send(JSON.stringify(komentari));
-    });
 });
 
 app.get('/statistika/komentari', function (req, res) {
 
     var sifra=req.query.sifra;
     var spirala=req.query.spirala;
-    var filename='./markS'+spirala;
+    var filename='./markS'+spirala+req.session.user.index+".json";
     var komentar="";
-
-    Korisnik.findOne({
-        where:{username: req.session.user.username},
-        include:[
-            {model: Podaci}
-        ]
-    }).then(function (k) {
-
-        filename += k.personalInfo.index + ".json";
 
         if(fs.existsSync(filename))
         {
@@ -626,26 +608,26 @@ app.get('/statistika/komentari', function (req, res) {
             }
         }
         res.send(JSON.stringify({komentar: komentar}));
-    });
 });
 
 app.get('/statistika/student',function (req, res) {
 
-    Korisnik.findOne({
-        where: {username: req.session.user.username},
-        include: [
-            {model: Podaci}
-        ]
-    }).then(function (k) {
+    res.send(JSON.stringify({ime: req.session.user.name}));
+});
 
-        res.send(JSON.stringify({ime: k.personalInfo.ime_i_prezime}));
-    });
+app.get('/profil/podaci',function (req,res) {
+
+    res.send(JSON.stringify(req.session.user));
 });
 
 app.get('/korisnici/:id/details',function (req,res) {
 
     Korisnik.findOne({
-        where:{id: req.params.id}
+        where:{id: req.params.id},
+        include:[
+            {model: Role},
+            {model: Podaci}
+        ]
     })
         .then(function (korisnik) {
 
@@ -721,9 +703,10 @@ app.post('/login', function(req, res){
     Korisnik.findOne(
         {
             where: {username: req.body.email},
-            include: [{
-                model: Role
-            }]
+            include:[
+                {model: Role},
+                {model: Podaci}
+            ]
         })
         .then(function (user) {
             if (!user) res.send("Korisnik ne postoji");
@@ -740,7 +723,17 @@ app.post('/login', function(req, res){
                             req.session.user = {
                                 username: user.username,
                                 password: user.password,
-                                role: user.role.roles
+                                role: user.role.roles,
+                                name: user.personalInfo.ime_i_prezime,
+                                index: user.personalInfo.index,
+                                bitbucket: user.personalInfo.url,
+                                grupa: user.personalInfo.grupa,
+                                ssh: user.personalInfo.ssh,
+                                repo: user.personalInfo.repozitorij,
+                                email: user.personalInfo.email,
+                                maxgrupa: user.personalInfo.max_broj_grupa,
+                                semestar: user.personalInfo.semestar,
+                                godina: user.personalInfo.akademska_godina
                             };
                             req.session.save();
                             res.redirect('/');
