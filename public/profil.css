@@ -1,0 +1,104 @@
+.okvir {
+
+    max-width: 1000px;
+    display: grid;
+    grid-row-gap: 15px;
+    margin: auto;
+}
+
+.form {
+
+    background-color: #028090;
+    background-image: url("https://www.transparenttextures.com/patterns/elegant-grid.png");
+    border: 5px solid #E4FDE1;
+    display: block;
+}
+
+#poruke, #poruke-p {
+
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    margin: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.profil, .promjenapass {
+
+    display: grid;
+    padding: 40px;
+}
+
+.greske {
+
+    padding: 0px 40px;
+}
+
+.unos {
+    display: flex;
+}
+
+input {
+
+    width: 60%;
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 2px;
+    font-size: 12pt;
+    border: none;
+    border-bottom: 4px solid #D8262E;
+    background-color: #E4FDE1;
+    font-family: sans-serif;
+}
+
+label{
+
+    width: 40%;
+    float: left;
+}
+
+label, h1{
+
+    font-size: 12pt;
+    color: #FDFFFC;
+    font-family: sans-serif;
+}
+
+h1 {
+
+    font-size: 15pt;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    background-color: #114B5F;
+    border-bottom: 4px solid #E4FDE1;
+}
+
+.nepostojeca {
+
+    width: 70%;
+}
+
+button {
+
+    width: 30%;
+    float: right;
+    border: 2px solid #E4FDE1;
+    background-color: #D8262E;
+    margin-top: 15px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #FDFFFC;
+    padding: 5px;
+    font-family: sans-serif;
+}
+
+@media(max-width: 700px) {
+
+    .okvir{
+
+        display: block;
+    }
+}

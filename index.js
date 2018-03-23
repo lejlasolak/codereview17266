@@ -149,6 +149,11 @@ app.get('/listaKorisnika', function(req, res) {
     else res.send("Nemate pristup stranici ako niste prijavljeni kao administrator");
 });
 
+app.get('/profil',function (req,res) {
+
+    res.sendFile(__dirname + '/profil.html');
+});
+
 app.get('/logout', function (req,res) {
 
     if (req.session.user) {
@@ -166,16 +171,16 @@ app.post('/menu', function (req,res) {
 
     else if(req.session.user.role==='student'){
 
-        links=["statistika","komentari","logout"];
+        links=["statistika","komentari","profil","logout"];
 
     }
     else if(req.session.user.role==='nastavnik'){
 
-        links=["spisak","nastavnik","bitbucket","logout"];
+        links=["spisak","nastavnik","bitbucket","profil","logout"];
     }
     else{
 
-        links=["korisnici", "logout"];
+        links=["korisnici", "profil","logout"];
     }
     res.send(links);
 });
