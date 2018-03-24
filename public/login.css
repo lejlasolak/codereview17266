@@ -1,5 +1,6 @@
 .okvir {
 
+	width: 100%;
 	max-width: 1000px;
 	display: flex;
 	margin: auto;
@@ -11,7 +12,6 @@
 	margin: auto;
 	vertical-align: middle;
 	display: flex;
-	grid-column-gap: 20px;
 }
 
 .forma, .forma_r{
@@ -29,6 +29,7 @@
 }
 
 .forma_r{
+
 	border-left: none;
 	width: 60%;
 	float: right;
@@ -124,14 +125,20 @@ button {
 
 @media(max-width: 700px) {
 
-	.okvir, .okvir_formi{
+	.okvir_formi {
 
-		display: block;
-		width: 100%;
+		display: grid;
+		grid-row-gap: 25px;
 	}
 
 	.forma_r, .forma {
 
 		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.forma_r{
+
+		border-left: 5px solid #E4FDE1;
 	}
 }
