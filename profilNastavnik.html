@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="/profil.css">
+
+<div class="okvir">
+
+	<div class="form" id="nastavnik">
+
+		<h1>Osnovni podaci</h1>
+
+		<form class="profil">
+
+			<div class="unos">
+				<label for="imeprezime-pp">Ime i prezime:</label>
+				<input type="text" id="imeprezime-pp" name="imeprezime"
+				       onblur="var rez=Validacija.validirajImeiPrezime(this.value);
+									poruka(rez,'poruke-pp',8);">
+			</div>
+
+			<div class="unos">
+				<label for="korisnicko-pp">Korisničko ime:</label>
+				<input type="text" id="korisnicko-pp" name="k-ime"
+				       onblur="var rez=Validacija.validirajKorisnicko(this.value);
+									poruka(rez,'poruke-pp',10);">
+			</div>
+
+			<div class="unos">
+				<label for="mail-pp">Fakultetski e-Mail:</label>
+				<input type="text" id="mail-pp" name="mail"
+				       onblur="var rez=Validacija.validirajFakultetski(this.value);
+							   poruka(rez,'poruke-pp',0);">
+			</div>
+
+			<div class="unos">
+				<label for="maxgrupa-pp">Maximalni broj grupa:</label>
+				<input type="text" id="maxgrupa-pp" name="maxgrupa"
+				       onblur="Validacija.postaviMaxGrupa(this.value);">
+			</div>
+
+			<div class="unos">
+				<label for="semestar-pp">Trenutni semestar:</label>
+				<select name="semestar" id="semestar-pp" onchange="Validacija.postaviTrenSemestar(this.value)">
+					<option value=0>Zimski</option>
+					<option value=1>Ljetni</option>
+				</select>
+			</div>
+
+			<div class="unos">
+				<label for="godina-pp">Trenutna akademska godina:</label>
+				<input type="text" id="godina-pp" name="godina"
+				       onblur="var rez=Validacija.validirajAkGod(this.value);
+						       poruka(rez,'poruke-pp',5);">
+
+			</div>
+
+			<div class="unos">
+				<label class="nepostojeca"></label>
+				<button id="save-p">Save changes</button>
+			</div>
+
+		</form>
+
+		<div class="greske">
+			<div id="poruke-pp"></div>
+		</div>
+
+	</div>
+
+	<div class="form">
+
+		<h1>Promjena passworda</h1>
+
+		<form class="profil">
+
+			<div class="unos">
+				<label for="stari">Stari password:</label>
+				<input type="password" id="stari" name="pass">
+			</div>
+
+			<div class="unos">
+				<label for="novi">Novi password:</label>
+				<input type="password" id="novi" name="pass"
+				       onblur="var rez=Validacija.validirajPassword(this.value);
+							       poruka(rez,'poruke-p',3);">
+			</div>
+
+			<div class="unos">
+				<label for="novi-c">Potvrda passworda:</label>
+				<input type="password" id="novi-c" name="pass_c"
+				       onblur="var rez=Validacija.validirajPotvrdu(document.getElementById('pass_s').value,this.value);
+								   poruka(rez,'poruke-p',4);">
+			</div>
+
+			<div class="unos">
+				<label class="nepostojeca"></label>
+				<button id="savepass">Confirm</button>
+			</div>
+
+		</form>
+
+		<div class="greske">
+			<div id="poruke-p"></div>
+		</div>
+
+	</div>
+
+</div>

@@ -151,7 +151,9 @@ app.get('/listaKorisnika', function(req, res) {
 
 app.get('/profil',function (req,res) {
 
-    if(provjeriNastavnika(req) || provjeriAdmina(req) || provjeriStudenta(req)) res.sendFile(__dirname + '/profil.html');
+    if(provjeriStudenta(req)) res.sendFile(__dirname + '/profilStudent.html');
+    else if(provjeriNastavnika(req)) res.sendFile(__dirname + '/profilNastavnik.html');
+    else if(provjeriAdmina(req)) res.sendFile(__dirname + '/profilAdmin.html');
     else res.send("Nemate pristup stranici ako niste prijavljeni");
 });
 
@@ -620,6 +622,11 @@ app.get('/profil/podaci',function (req,res) {
     res.send(JSON.stringify(req.session.user));
 });
 
+app.put('/korisnik/:id',function (req,res) {
+
+
+});
+
 app.get('/korisnici/:id/details',function (req,res) {
 
     Korisnik.findOne({
@@ -719,7 +726,7 @@ app.post('/login', function(req, res){
                     }
                     else {
                         if (user.role.roles === 'nastavnik' && user.verified == false) res.send("Administrator nije odobrio pristup");
-                        else {
+                        else if(user.role.roles!=='administrator'){
                             req.session.user = {
                                 username: user.username,
                                 password: user.password,
@@ -734,6 +741,16 @@ app.post('/login', function(req, res){
                                 maxgrupa: user.personalInfo.max_broj_grupa,
                                 semestar: user.personalInfo.semestar,
                                 godina: user.personalInfo.akademska_godina
+                            };
+                            req.session.save();
+                            res.redirect('/');
+                        }
+                        else{
+
+                            req.session.user = {
+                                username: user.username,
+                                password: user.password,
+                                role: user.role.roles,
                             };
                             req.session.save();
                             res.redirect('/');

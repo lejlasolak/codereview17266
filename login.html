@@ -96,8 +96,8 @@
 					       onblur="var rez=Validacija.validirajImeiPrezime(this.value);
 						       poruka(rez,'poruke_r',8);">
 
-					<label for="korisnicko">Korisničko ime:</label>
-					<input type="text" id="korisnicko" name="k-ime"
+					<label for="korisnickon">Korisničko ime:</label>
+					<input type="text" id="korisnickon" name="k-ime"
 					       onblur="var rez=Validacija.validirajKorisnicko(this.value);
 								poruka(rez,'poruke_r',10);">
 
@@ -138,7 +138,11 @@
 
 				</form>
 			</div>
-			<div id="poruke_r"></div>
+
+			<div class="greske">
+				<div id="poruke_r"></div>
+			</div>
+
 		</div>
 	</div>
 </div>

@@ -11,7 +11,6 @@
     background-color: #028090;
     background-image: url("https://www.transparenttextures.com/patterns/elegant-grid.png");
     border: 5px solid #E4FDE1;
-    display: block;
 }
 
 .ostalo label {
@@ -44,7 +43,7 @@
     display: flex;
 }
 
-input {
+input, select {
 
     width: 60%;
     float: right;

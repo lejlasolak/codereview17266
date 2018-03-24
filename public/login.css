@@ -6,13 +6,12 @@
 }
 
 .okvir_formi {
-	
+
+	width: 100%;
 	margin: auto;
 	vertical-align: middle;
-	display: grid;
-	grid: [r1-start] "login register" [r1-end];
+	display: flex;
 	grid-column-gap: 20px;
-	max-width: 750px;
 }
 
 .forma, .forma_r{
@@ -23,10 +22,26 @@
 	display: block;
 }
 
+.forma {
+
+	width: 40%;
+	float: left;
+}
+
+.forma_r{
+	border-left: none;
+	width: 60%;
+	float: right;
+}
+
+.greske {
+
+	padding: 0px 40px;
+}
+
 #poruke_r {
 
 	color: white;
-	width: 83%;
 	font-weight: bold;
 	font-size: 12pt;
 	margin: auto;
@@ -108,15 +123,15 @@ button {
 }
 
 @media(max-width: 700px) {
-	
-	.okvir_formi {
 
-		grid: [r1-start] "login" [r1-end]
-		[r2-start] "register" [r2-end];
-		grid-row-gap: 20px;
-	}
-	.okvir{
+	.okvir, .okvir_formi{
 
 		display: block;
+		width: 100%;
+	}
+
+	.forma_r, .forma {
+
+		width: 100%;
 	}
 }
