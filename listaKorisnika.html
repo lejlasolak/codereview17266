@@ -2,12 +2,51 @@
 <script src="/listaKorisnika.js"></script>
 
 <div class="okvir">
-	<input type="text" name="pretraga" id="pretraga" placeholder="Pretraga po korisničkom imenu...">
-	<button
-	onclick="Pretrazi(document.getElementById('pretraga').value,
+
+	<div class="korisnici">
+
+		<input type="text" name="pretraga" id="pretraga" placeholder="Pretraži po korisničkom imenu">
+
+		<button
+				onclick="Pretrazi(document.getElementById('pretraga').value,
 	function(err, data) {
-	    document.getElementById('lista').innerHTML='';
-		document.getElementById('lista').innerHTML=data.data;
+	    document.getElementsByTagName('tbody')[0].innerHTML='';
+		document.getElementsByTagName('tbody')[0].innerHTML=data.data;
 	});">Search</button>
-	<div id="lista"></div>
+
+		<div id="lista">
+
+			<table id="tabela">
+				<thead>
+				<tr>
+					<th>Ime i prezime</th>
+					<th>Username</th>
+					<th>Verification</th>
+					<th>Delete</th>
+					<th>Details</th>
+				</tr>
+				</thead>
+
+			</table>
+
+		</div>
+
+		<div class="paginacija">
+			<button>&laquo</button>
+			<button id="1" >1</button>
+			<button id="2" >2</button>
+			<button id="3" >3</button>
+			<button id="4" >4</button>
+			<button id="5" >5</button>
+			<button>&raquo</button>
+		</div>
+
+	</div>
+
+	<div class="detalji">
+		<div class="details">
+			<h1>Details</h1>
+		</div>
+	</div>
+
 </div>

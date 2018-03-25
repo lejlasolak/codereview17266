@@ -200,9 +200,8 @@ app.get('/korisnici',function (req,res) {
         })
             .then(function (korisnici) {
 
-                var ispis = '<table>';
+                var ispis = '';
                 var redovi = [];
-                redovi.push(popuniZaglavlje());
                 redovi.push('<tbody>');
                 korisnici.forEach(function (korisnik) {
 
@@ -210,15 +209,17 @@ app.get('/korisnici',function (req,res) {
                         var red = popuniRed(korisnik);
                         if (korisnik.role.roles === 'nastavnik') {
 
-                            if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td></tr>';
-                            else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td></tr>';
+                            if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td>';
+                            else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td>';
                         }
-                        else red += '<td>null</td></tr>';
+                        else red += '<td></td>';
+                        red+='<td><button class="delete" onClick="Delete('+ korisnik.id+')">Delete</button></td>'+
+                            '<td><button class="details" onClick="Details('+ korisnik.id+')">Details</button></td><tr>';
                         redovi.push(red);
                     }
                 });
                 for (var j = 0; j < redovi.length; j++) ispis += redovi[j];
-                ispis += '</tbody></table>';
+                ispis += '</tbody>';
                 res.send(ispis);
             });
     }
@@ -228,34 +229,7 @@ app.get('/korisnici',function (req,res) {
 const popuniRed=function (korisnik) {
 
     return '<tr><td>' + korisnik.personalInfo.ime_i_prezime + '</td>' +
-        '<td>' + korisnik.username + '</td>' +
-        '<td>' + korisnik.personalInfo.index + '</td>' +
-        '<td>' + korisnik.personalInfo.grupa + '</td>' +
-        '<td>' + korisnik.personalInfo.akademska_godina + '</td>' +
-        '<td>' + korisnik.personalInfo.url + '</td>' +
-        '<td>' + korisnik.personalInfo.ssh + '</td>' +
-        '<td>' + korisnik.personalInfo.repozitorij + '</td>'+
-        '<td>' + korisnik.personalInfo.email + '</td>' +
-        '<td>' + korisnik.personalInfo.max_broj_grupa + '</td>' +
-        '<td>' + korisnik.personalInfo.semestar + '</td>';
-};
-
-const popuniZaglavlje=function () {
-
-    return '<thead><tr>' +
-        '<th>Ime i prezime</th>' +
-        '<th>Username</th>' +
-        '<th>Index</th>' +
-        '<th>Grupa</th>' +
-        '<th>Akademska godina</th>' +
-        '<th>Bitbucket URL</th>' +
-        '<th>Bitbucket SSH</th>' +
-        '<th>Naziv repozitorija</th>' +
-        '<th>Fakultetski email</th>' +
-        '<th>Max broj grupa</th>' +
-        '<th>Semestar</th>' +
-        '<th>Verification</th>'
-        '</tr></thead>';
+        '<td>' + korisnik.username + '</td>';
 };
 
 app.post('/korisnici',function (req,res)
@@ -291,14 +265,15 @@ app.post('/pretraga',function (req,res) {
 
             if(korisnik.role.roles!=='administrator') {
 
-                var red = '<table>' + popuniZaglavlje() + '<tbody>' + popuniRed(korisnik);
+                var red = '<tbody>' + popuniRed(korisnik);
                 if (korisnik.role.roles === 'nastavnik') {
 
-                    if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td></tr>';
-                    else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td></tr>';
+                    if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td>';
+                    else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td>';
                 }
-                else red += '<td>null</td></tr>';
-                red += '</tbody></table>';
+                else red += '<td></td>';
+                red+='<td><button class="delete" onClick="Delete('+ korisnik.id+')">Delete</button></td>'+
+                    '<td><button class="details" onClick="Details('+ korisnik.id+')">Details</button></td><tr></tbody>';
                 res.send({data: red});
             }
             else res.send({data:null});

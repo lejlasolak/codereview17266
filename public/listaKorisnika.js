@@ -5,7 +5,7 @@ function Korisnici(){
 
         if (xhttp.readyState === 4 && xhttp.status === 200)
             if(document.getElementById("lista"))
-                document.getElementById("lista").innerHTML = xhttp.responseText;
+                document.getElementById("tabela").innerHTML += xhttp.responseText;
     }
     xhttp.open("GET", "/korisnici", true);
     xhttp.send();
@@ -32,11 +32,15 @@ function Pretrazi(korisnicko, fnCallback) {
 
 function VerifyUnverify(id, verify){
 
+    var v="verify";
+    if(!verify) v="unverify"
+
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function() {
 
         if (ajax.readyState === 4 && ajax.status === 200) {
-            document.getElementById('lista').innerHTML=Korisnici();
+            document.getElementById("tabela").removeChild( document.getElementsByTagName("tbody")[0]);
+            Korisnici();
             return;
         }
 
@@ -45,6 +49,7 @@ function VerifyUnverify(id, verify){
         }
     }
     ajax.open("POST", "/korisnici", true);
+    //ajax.open("PUT", "/korisnici/?"+id+'&'+'verification='+v, true);
     ajax.setRequestHeader("Content-Type","application/json");
     ajax.send(JSON.stringify({id:id, verify:verify}));
 }
