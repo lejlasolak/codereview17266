@@ -200,7 +200,7 @@ app.get('/korisnici',function (req,res) {
         })
             .then(function (korisnici) {
 
-                var ispis = '';
+                /*var ispis = '';
                 var redovi = [];
                 redovi.push('<tbody>');
                 korisnici.forEach(function (korisnik) {
@@ -219,26 +219,21 @@ app.get('/korisnici',function (req,res) {
                     }
                 });
                 for (var j = 0; j < redovi.length; j++) ispis += redovi[j];
-                ispis += '</tbody>';
-                res.send(ispis);
+                ispis += '</tbody>';*/
+                res.send(JSON.stringify(korisnici));
             });
     }
     else res.send("Nemate pristup stranici ako niste prijavljeni kao administrator");
 });
 
-const popuniRed=function (korisnik) {
-
-    return '<tr><td>' + korisnik.personalInfo.ime_i_prezime + '</td>' +
-        '<td>' + korisnik.username + '</td>';
-};
-
-app.post('/korisnici',function (req,res)
+app.put('/korisnici',function (req,res)
 {
-    var verify=req.body.verify;
+    var verify=true;
+    if(req.query.verification==="unverify") verify=false;
 
     Korisnik.findOne({
 
-        where:{id: req.body.id}
+        where:{id: req.query.id}
     })
         .then(function (korisnik) {
             korisnik.update({
@@ -250,11 +245,11 @@ app.post('/korisnici',function (req,res)
         });
 });
 
-app.post('/pretraga',function (req,res) {
+app.get('/korisnici/search',function (req,res) {
 
     Korisnik.findOne(
         {
-            where: {username: req.body.korisnicko},
+            where: {username: req.query.username},
             include:[
                 {model: Role},
                 {model: Podaci}
@@ -265,7 +260,7 @@ app.post('/pretraga',function (req,res) {
 
             if(korisnik.role.roles!=='administrator') {
 
-                var red = '<tbody>' + popuniRed(korisnik);
+                /*var red = '<tbody>' + popuniRed(korisnik);
                 if (korisnik.role.roles === 'nastavnik') {
 
                     if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td>';
@@ -273,14 +268,14 @@ app.post('/pretraga',function (req,res) {
                 }
                 else red += '<td></td>';
                 red+='<td><button class="delete" onClick="Delete('+ korisnik.id+')">Delete</button></td>'+
-                    '<td><button class="details" onClick="Details('+ korisnik.id+')">Details</button></td><tr></tbody>';
-                res.send({data: red});
+                    '<td><button class="details" onClick="Details('+ korisnik.id+')">Details</button></td><tr></tbody>';*/
+                res.send(JSON.stringify(korisnik));
             }
-            else res.send({data:null});
+            else res.send(null);
         })
         .catch(function (err) {
 
-            res.send({data:null});
+            res.send(null);
         });
 });
 
@@ -597,12 +592,7 @@ app.get('/profil/podaci',function (req,res) {
     res.send(JSON.stringify(req.session.user));
 });
 
-app.put('/korisnik/:id',function (req,res) {
-
-
-});
-
-app.get('/korisnici/:id/details',function (req,res) {
+app.get('/korisnici/details/:id',function (req,res) {
 
     Korisnik.findOne({
         where:{id: req.params.id},
@@ -613,72 +603,32 @@ app.get('/korisnici/:id/details',function (req,res) {
     })
         .then(function (korisnik) {
 
-            res.send(korisnik);
+            res.send(JSON.stringify(korisnik));
         });
 });
 
 app.delete('/korisnici/:id',function (req,res) {
 
-    Korisnik.destroy({
+    Korisnik.findOne({
         where: {
             id: req.params.id
-        },
-        truncate: true
-    });
-
-    res.send({message:"User successfully deleted"});
-});
-
-app.put('/korisnici/:id/verify',function (req,res) {
-
-    Korisnik.findOne({
-        where:{id: req.params.id}
-    })
-        .then(function (korisnik) {
-
-            var v=!korisnik.verified;
-
-            korisnik.update({
-                verified: v
-            });
-
-            res.send(null);
-        });
-});
-
-app.get('korisnici/search',function(req,res){
-
-    Korisnik.findOne(
-        {
-            where: {username: req.query.username},
-            include:[
-                {model: Role},
-                {model: Podaci}
-            ]
         }
-    )
-        .then(function (korisnik) {
+    })
+        .then(function(korisnik){
 
-            if(korisnik.role.roles!=='administrator') {
-
-                var red = '<table>' + popuniZaglavlje() + '<tbody>' + popuniRed(korisnik);
-                if (korisnik.role.roles === 'nastavnik') {
-
-                    if (korisnik.verified == false) red += '<td><button class="verify" onClick="VerifyUnverify(' + korisnik.id + ',' + true + ')">Verify</button></td></tr>';
-                    else red += '<td><button class="unverify" onClick="VerifyUnverify(' + korisnik.id + ',' + false + ')">Unverify</button></td></tr>';
+            Podaci.findOne({
+                where: {
+                    id: korisnik.personalInfoId
                 }
-                else red += '<td>null</td></tr>';
-                red += '</tbody></table>';
-                res.send({data: red});
-            }
-            else res.send({data:null});
-        })
-        .catch(function (err) {
+            })
+                .then(function (podaci) {
 
-            res.send({data:null});
+                    korisnik.destroy();
+                    podaci.destroy();
+                    res.send("User successfully deleted");
+                });
         });
-    }
-);
+});
 
 app.post('/login', function(req, res){
 

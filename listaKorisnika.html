@@ -8,11 +8,7 @@
 		<input type="text" name="pretraga" id="pretraga" placeholder="Pretraži po korisničkom imenu">
 
 		<button
-				onclick="Pretrazi(document.getElementById('pretraga').value,
-	function(err, data) {
-	    document.getElementsByTagName('tbody')[0].innerHTML='';
-		document.getElementsByTagName('tbody')[0].innerHTML=data.data;
-	});">Search</button>
+				onclick="Pretrazi(document.getElementById('pretraga').value);">Search</button>
 
 		<div id="lista">
 
@@ -44,9 +40,85 @@
 	</div>
 
 	<div class="detalji">
-		<div class="details">
-			<h1>Details</h1>
+
+		<h1>Details</h1>
+
+		<div class="detail">
+
+			<div id="zajednicki">
+
+				<div class="unos">
+					<label>Ime i prezime:</label>
+					<label id="ime"></label>
+				</div>
+
+				<div class="unos">
+					<label>Username:</label>
+					<label id="username"></label>
+				</div>
+
+			</div>
+
+			<div id="studentski">
+
+				<div class="unos">
+					<label>Index:</label>
+					<label id="index"></label>
+				</div>
+
+				<div class="unos">
+					<label>Grupa:</label>
+					<label id="grupa"></label>
+				</div>
+
+				<div class="unos">
+					<label>BitBucket URL:</label>
+					<label id="burl"></label>
+				</div>
+
+				<div class="unos">
+					<label>BitBucket SSH:</label>
+					<label id="bssh"></label>
+				</div>
+
+				<div class="unos">
+					<label>Akademska godina:</label>
+					<label id="god"></label>
+				</div>
+
+				<div class="unos">
+					<label>Naziv repozitorija:</label>
+					<label id="repoz"></label>
+				</div>
+
+			</div>
+
+			<div id="nastavnicki">
+
+				<div class="unos">
+					<label>E-mail:</label>
+					<label id="email"></label>
+				</div>
+
+				<div class="unos">
+					<label>Max broj grupa:</label>
+					<label id="maxgrupa"></label>
+				</div>
+
+				<div class="unos">
+					<label>Trenutni semestar:</label>
+					<label id="semes"></label>
+				</div>
+
+				<div class="unos">
+					<label>Trenutna akademska godina:</label>
+					<label id="agod"></label>
+				</div>
+
+			</div>
+
 		</div>
+
 	</div>
 
 </div>

@@ -32,6 +32,11 @@
 	border: 5px solid #E4FDE1;
 }
 
+.detail {
+
+	padding: 40px;
+}
+
 button {
 
 	grid-column: 2;
@@ -65,7 +70,7 @@ input {
 	border: 4px solid #114B5F;
 	overflow-x: auto;
 	overflow-y: auto;
-	height: 600px;
+	height: 500px;
 }
 
 td button{
@@ -121,16 +126,6 @@ th {
 	color: #FDFFFC;
 }
 
-h1 {
-
-	font-size: 15pt;
-	margin: auto;
-	text-align: center;
-	padding: 5px;
-	background-color: #114B5F;
-	border-bottom: 4px solid #E4FDE1;
-}
-
 .paginacija {
 
 	grid-column: 1/3;
@@ -151,6 +146,36 @@ h1 {
 	border: 1px solid #114B5F;
 }
 
+.unos {
+
+	display: flex;
+}
+
+label{
+
+	float: left;
+	margin-bottom: 20px;
+}
+
+label, h1 {
+
+	font-size: 12pt;
+	color: #FDFFFC;
+	font-family: sans-serif;
+}
+
+h1 {
+
+	font-size: 15pt;
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+	background-color: #114B5F;
+	border-bottom: 4px solid #E4FDE1;
+}
+
+#nastavnicki, #studentski, #zajednicki { display: none; }
+
 @media(max-width: 700px) {
 
 	.okvir {
@@ -166,12 +191,11 @@ h1 {
 
 	#lista {
 
-		height: auto;
+		max-height: 400px;
 	}
 
 	.detalji {
 
 		border-top: none;
-		max-height: 500px;
 	}
 }

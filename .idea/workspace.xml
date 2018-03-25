@@ -7,7 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listaKorisnika.html" afterPath="$PROJECT_DIR$/listaKorisnika.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/listaKorisnika.css" afterPath="$PROJECT_DIR$/public/listaKorisnika.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/listaKorisnika.js" afterPath="$PROJECT_DIR$/public/listaKorisnika.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/login.css" afterPath="$PROJECT_DIR$/public/login.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/profil.css" afterPath="$PROJECT_DIR$/public/profil.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="listaKorisnika.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/listaKorisnika.html">
+      <file leaf-file-name="profilStudent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profilStudent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -49,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listaKorisnika.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="listaKorisnika.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/listaKorisnika.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+            <state relative-caret-position="580">
+              <caret line="188" column="31" lean-forward="true" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -72,18 +71,18 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="237" column="0" lean-forward="true" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="602" column="6" lean-forward="true" selection-start-line="602" selection-start-column="6" selection-end-line="602" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listaKorisnika.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="listaKorisnika.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/listaKorisnika.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+            <state relative-caret-position="689">
+              <caret line="104" column="0" lean-forward="true" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,8 +91,18 @@
       <file leaf-file-name="profil.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/profil.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="99" column="28" lean-forward="true" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
+            <state relative-caret-position="391">
+              <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listaKorisnika.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/listaKorisnika.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -119,6 +128,7 @@
       <find>h2</find>
       <find>zaglavlje</find>
       <find>kom</find>
+      <find>deta</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,12 +156,12 @@
         <option value="$PROJECT_DIR$/profilStudent.html" />
         <option value="$PROJECT_DIR$/login.html" />
         <option value="$PROJECT_DIR$/public/common.css" />
-        <option value="$PROJECT_DIR$/public/profil.css" />
         <option value="$PROJECT_DIR$/public/login.css" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/public/listaKorisnika.css" />
+        <option value="$PROJECT_DIR$/public/profil.css" />
         <option value="$PROJECT_DIR$/listaKorisnika.html" />
+        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/public/listaKorisnika.js" />
+        <option value="$PROJECT_DIR$/public/listaKorisnika.css" />
       </list>
     </option>
   </component>
@@ -255,7 +265,7 @@
       <workItem from="1521817875868" duration="6153000" />
       <workItem from="1521835823650" duration="8370000" />
       <workItem from="1521920650710" duration="7298000" />
-      <workItem from="1521978129374" duration="11145000" />
+      <workItem from="1521978129374" duration="19969000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1521754893070</created>
@@ -292,11 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521930168860</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="prepravka liste korisnika html samo">
+      <created>1521996909056</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1521996909056</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74391000" />
+    <option name="totallyTimeSpent" value="83215000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1331" height="1047" extended-state="0" />
@@ -356,7 +373,8 @@
     <MESSAGE value="novi" />
     <MESSAGE value="pregled podataka, fali editovanje i promjena pass" />
     <MESSAGE value="popravke login html i profil html" />
-    <option name="LAST_COMMIT_MESSAGE" value="popravke login html i profil html" />
+    <MESSAGE value="prepravka liste korisnika html samo" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepravka liste korisnika html samo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -630,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profilStudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profilAdmin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -667,14 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/profil.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="99" column="28" lean-forward="true" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/login.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -699,34 +702,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/listaKorisnika.css">
+    <entry file="file://$PROJECT_DIR$/profilStudent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/profil.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaKorisnika.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="352">
+          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="237" column="0" lean-forward="true" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+        <state relative-caret-position="450">
+          <caret line="602" column="6" lean-forward="true" selection-start-line="602" selection-start-column="6" selection-end-line="602" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/listaKorisnika.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        <state relative-caret-position="689">
+          <caret line="104" column="0" lean-forward="true" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/listaKorisnika.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="188" column="31" lean-forward="true" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="31" />
           <folding />
         </state>
       </provider>
